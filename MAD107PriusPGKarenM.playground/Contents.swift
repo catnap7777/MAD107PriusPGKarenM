@@ -107,8 +107,29 @@ class Prius2020 {
     }
 }
 
+class PriusLE: Prius2020 {
+    
+//    var kamTest: String = "this is a test"
+    var kamTest2: Int
+    
+    override init(model: String, color: CarColor) {
+        self.kamTest2 = 0
+        super.init(model: model, color: color)
+    }
+    
+    override func printModColor() {
+        print("\nWay to go! you overrode the print function")
+        super.printModColor()
+    }
+    
+    
+}
+
 var selectPrius = Prius2020(model: "Limited", color: CarColor.Blue)
 selectPrius.printModColor()
+
+var selectLE = PriusLE(model: "XLE", color: CarColor.Pearl)
+selectLE.printModColor()
 
 
 
