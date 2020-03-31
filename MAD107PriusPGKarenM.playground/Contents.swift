@@ -110,18 +110,19 @@ class Prius2020 {
 class PriusLE: Prius2020 {
     
 //    var kamTest: String = "this is a test"
-    var kamTest2: Int
+    //var kamTest2: Int
     var kamModel: String
     
     override init(model: String, color: CarColor) {
-        self.kamTest2 = 0
-        self.kamModel = model
-        super.init(model: model, color: color)
+        //self.kamTest2 = 0
+        //self.kamModel = model
+        self.kamModel = "LE"
+        super.init(model: "LE", color: color)
     }
     
     override func printModColor() {
-        print("\n\t\t\tModel LE: \(priusModelDictionary[kamModel]?.desc ?? "nf")")
         super.printModColor()
+        print("\n\t\t\tModel LE: \(priusModelDictionary[kamModel]?.desc ?? "nf")")
     }
     
     
