@@ -111,14 +111,16 @@ class PriusLE: Prius2020 {
     
 //    var kamTest: String = "this is a test"
     var kamTest2: Int
+    var kamModel: String
     
     override init(model: String, color: CarColor) {
         self.kamTest2 = 0
+        self.kamModel = model
         super.init(model: model, color: color)
     }
     
     override func printModColor() {
-        print("\nWay to go! you overrode the print function")
+        print("\n\t\t\tModel LE: \(priusModelDictionary[kamModel]?.desc ?? "nf")")
         super.printModColor()
     }
     
@@ -136,9 +138,17 @@ selectLE.printModColor()
 selectLE.priusModel = "ABC"
 selectLE.printModColor()
 
+selectLE.priusColor = CarColor.Red.rawValue
 selectLE.priusModel = "L Eco"
 selectLE.printModColor()
 
+selectLE.priusColor = CarColor.Sea.rawValue
+selectLE.priusModel = "LE"
+selectLE.printModColor()
+
+selectLE.priusColor = CarColor.Red.rawValue
+selectLE.priusModel = "L Eco"
+selectLE.printModColor()
 
 
 
