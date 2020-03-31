@@ -5,9 +5,9 @@ var str = "Hello, playground"
 //.. This playground program uses hard coded menu item values from a dictionary, enums, functions, and structures... and calculates
 //..   the order cost, the tax, the tip, and the total cost to the user
 
-print("\n****************************************************************************************************************************************************")
-print("********                                                    Bill's Amazing WeBurgers                                                        ********")
-print("****************************************************************************************************************************************************")
+//print("\n****************************************************************************************************************************************************")
+//print("********                                                    Bill's Amazing WeBurgers                                                        ********")
+//print("****************************************************************************************************************************************************")
 
 //.. Approved Menu Items
 var menuDictionary = ["French Fries": (price: 2.25, desc: "Super Deluxe French Fries"),
@@ -30,12 +30,12 @@ var menuDictionary = ["French Fries": (price: 2.25, desc: "Super Deluxe French F
                       "Burger - Everything": (price: 4.75, desc: "1/4 lb Angus Beef Burger with Apple Roasted Bacon, Cheddar Cheese, Lettuce, Tomato, Pickles, and Whatever Else You Want!")
 ]
 
-var priusModelDictionary = ["L Eco": (price: 24,325),
-                            "LE": (price: 25,535),
-                            "XLE": (price: 28,375),
-                            "Limited": (price: 32,500),
-                            "LE AWD-e": (price: 26,935),
-                            "XLE AWD-e": (price: 29,375)
+var priusModelDictionary = ["L Eco": (price: 24325.00, desc: "Economy"),
+                            "LE": (price: 25535.00, desc: "Luxury Edition"),
+                            "XLE": (price: 28375.00, desc: "Deluxe Luxury Edition"),
+                            "Limited": (price: 32500.00, desc: "Limited Edition"),
+                            "LE AWD-e": (price: 26935.00, desc: "Limited Edition All Wheel Drive"),
+                            "XLE AWD-e": (price: 29375.00, desc: "Deluxe Limited Edition All Wheel Drive")
 ]
 
 enum CarColor: String {
@@ -75,8 +75,47 @@ enum IntAcc: String {
     case IllumDS = "Illuminated Door Sills"
     case SecurS = "Security System"
     case UnivTH = "Universal Table Holder"
-    
 }
+
+class Prius2020 {
+    
+    var priusModel: String
+    var priusColor: String
+    
+    init(model: String, color: CarColor) {
+        self.priusModel = model
+        self.priusColor = color.rawValue
+    }
+    
+    func printModColor() {
+        
+        print("\n*********************************************************************************")
+        print("**              Congratulations on your 2020 Prius purchase!                   **")
+        print("*********************************************************************************")
+        print("\n\t\tYou've selected:  \n\n\t\t\t\tModel: \(priusModel)   Color: \(priusColor)")
+        
+        
+        
+        if let myPrice = priusModelDictionary[priusModel]?.price {
+            print("\t\t\t\tBase price: $\(String(format: "%.2f", myPrice))")
+            //print("\n\t\t\t\tBase price: $\(Double(myPrice))")
+        } else {
+            print("\t\t\t\tBase price:  2020 Prius Model: ** \(priusModel) not found **")
+        }
+        
+        
+    }
+}
+
+var selectPrius = Prius2020(model: "Limited", color: CarColor.Blue)
+selectPrius.printModColor()
+
+
+
+
+
+
+
 
 let taxRateE = 0.075
 
@@ -301,20 +340,20 @@ func calcTotals() {
 
 //................................................................................................................................................
 //.. place the orders for each item desired; at end, calculate receipt totals
-placeMyOrder(item: "French Fries")
-placeMyOrder(item: "Onion Rings")
-placeMyOrder(item: "Soda C")
-placeMyOrder(item: "Soda RB")
-placeMyOrder(item: "7up")
-placeMyOrder(item: "Chicken Sandwich")
-placeMyOrder(item: "Burger - Pizza")
-placeMyOrder(item: "Burger - Bacon")
-placeMyOrder(item: "Burger - Japaleno")
-placeMyOrder(item: "Cheese Stix")
-placeMyOrder(item: "Burger - Mushroom Swiss")
-placeMyOrder(item: "Burger - Everything")
-placeMyOrder(item: "Burger - Bean")
-calcTotals()
+//placeMyOrder(item: "French Fries")
+//placeMyOrder(item: "Onion Rings")
+//placeMyOrder(item: "Soda C")
+//placeMyOrder(item: "Soda RB")
+//placeMyOrder(item: "7up")
+//placeMyOrder(item: "Chicken Sandwich")
+//placeMyOrder(item: "Burger - Pizza")
+//placeMyOrder(item: "Burger - Bacon")
+//placeMyOrder(item: "Burger - Japaleno")
+//placeMyOrder(item: "Cheese Stix")
+//placeMyOrder(item: "Burger - Mushroom Swiss")
+//placeMyOrder(item: "Burger - Everything")
+//placeMyOrder(item: "Burger - Bean")
+//calcTotals()
 
 
 
