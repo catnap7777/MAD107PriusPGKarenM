@@ -131,6 +131,15 @@ selectPrius.printModColor()
 var selectLE = PriusLE(model: "XLE", color: CarColor.Pearl)
 selectLE.printModColor()
 
+selectLE.priusColor = CarColor.Black.rawValue
+selectLE.printModColor()
+selectLE.priusModel = "ABC"
+selectLE.printModColor()
+
+selectLE.priusModel = "L Eco"
+selectLE.printModColor()
+
+
 
 
 
