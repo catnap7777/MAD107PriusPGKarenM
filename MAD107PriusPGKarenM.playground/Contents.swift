@@ -11,20 +11,13 @@ var priusModelDictionary = ["L Eco": (price: 24325.00, desc: "Economy"),
                             "XLE AWD-e": (price: 29375.00, desc: "Deluxe Limited Edition All Wheel Drive")
 ]
 
-var priusAccPkgs = ["ALLWFLP": (desc: "All-Weather Floor Liner Package", incls: "All-Weather Floor Liners, Cargo Liner"),
-                    "CMP": (desc: "Carpet Mat Package", incls: "Carpet Floor Mats, Carpet Cargo Mat"),
-                    "FSFMLP": (desc: "Four Season FLoor Mat/Liner Package", incls: "Carpet Floor Mats, Carpet Cargo Mat, All-Weather Floor Liners"),
-                    "PAP": (desc: "Preferred Accessory Package", incls: "Carpet Floor Mats, Carpet Cargo Mat, Rear Bumper Applique, Cargo Net-Envelope"),
-                    "PP3": (desc: "Protection Package #3", incls: "Body Side Moldings, Door Edge Guards, Rear Bumper Applique")
+var priusAccPkgsDictionary = ["ALLWFLP": (desc: "All-Weather Floor Liner Package", incls: "All-Weather Floor Liners, Cargo Liner"),
+                              "CMP": (desc: "Carpet Mat Package", incls: "Carpet Floor Mats, Carpet Cargo Mat"),
+                              "FSFMLP": (desc: "Four Season FLoor Mat/Liner Package", incls: "Carpet Floor Mats, Carpet Cargo Mat, All-Weather Floor Liners"),
+                              "PAP": (desc: "Preferred Accessory Package", incls: "Carpet Floor Mats, Carpet Cargo Mat, Rear Bumper Applique, Cargo Net-Envelope"),
+                              "PP3": (desc: "Protection Package #3", incls: "Body Side Moldings, Door Edge Guards, Rear Bumper Applique")
 ]
 
-enum AccPkgs {
-    case ALLWFLP(desc: String, incls: String)
-    case CMP(desc: String, incls: String)
-    case FSFMLP(desc: String, incls: String)
-    case PAP(desc: String, incls: String)
-    case PP3(desc: String, incls: String)
-}
 
 enum CarColor: String {
     case Blue = "Electric Storm Blue"
@@ -65,6 +58,24 @@ enum IntAcc: String {
     case UnivTH = "Universal Table Holder"
 }
 
+//enum AccPkgs {
+//    case NONE(desc: String, incls: String)
+//    case ALLWFLP(desc: String, incls: String)
+//    case CMP(desc: String, incls: String)
+//    case FSFMLP(desc: String, incls: String)
+//    case PAP(desc: String, incls: String)
+//    case PP3(desc: String, incls: String)
+//}
+
+enum AccPkgs: String {
+    case NONE = "NONE"
+    case ALLWFLP = "ALLWFLP"
+    case CMP = "CMP"
+    case FSFMLP = "FSFMLP"
+    case PAP = "PAP"
+    case PP3 = "PP3"
+}
+
 
 class Prius2020 {
     
@@ -72,6 +83,7 @@ class Prius2020 {
     var priusColor: String
     var priusExtAccBuild: [String] = []
     var priusIntAccBuild: [String] = []
+    var priusAccPkgBuild: [String] = []
     
     
     init(model: String, color: CarColor) {
@@ -85,6 +97,44 @@ class Prius2020 {
     
     func addIntAcc(intAccName: IntAcc) {
         priusIntAccBuild.append(intAccName.rawValue)
+    }
+    
+    func addAccPkg(accPkgName: AccPkgs) {
+        
+        switch accPkgName {
+        case .ALLWFLP:
+            priusAccPkgBuild.append(AccPkgs.ALLWFLP.rawValue)
+        case .CMP:
+            priusAccPkgBuild.append(AccPkgs.CMP.rawValue)
+        case .FSFMLP:
+            priusAccPkgBuild.append(AccPkgs.FSFMLP.rawValue)
+        case .PAP:
+            priusAccPkgBuild.append(AccPkgs.PAP.rawValue)
+        case .PP3:
+            priusAccPkgBuild.append(AccPkgs.PP3.rawValue)
+        case .NONE:
+            priusAccPkgBuild.append(AccPkgs.NONE.rawValue)
+        }
+        
+    
+       
+//        switch accPkgName {
+//        case .ALLWFLP(var desc, var incls):
+//            desc = priusAccPkgsDictionary["ALLWFLP"]?.desc ?? "No Description"
+//            incls = priusAccPkgsDictionary["ALLWFLP"]?.desc ?? "No Items"
+//            priusAccPkgBuild.append("ALLWFLP")
+//        case .CMP(var desc, var incls):
+//            print("hi")
+//        case .FSFMLP(var desc, var incls):
+//            print("hi")
+//        case .PAP(var desc, var incls):
+//            print("hi")
+//        case .PP3(var desc, var incls):
+//            print("hi")
+//        case .NONE(var desc, var incls):
+//            print("hi")
+//        }
+        
     }
     
     func printModColor() {
@@ -101,6 +151,16 @@ class Prius2020 {
             //print("\n\t\t\t\tBase price: $\(Double(myPrice))")
         } else {
             print("\t\t\t\tBase price:  2020 Prius Model: ** \(priusModel) not found **")
+        }
+        
+        print("\n\t\t\t\tAccessory Packages Selected:")
+        if (priusAccPkgBuild.count) > 0 {
+            for item in priusAccPkgBuild {
+                print("\t\t\t\t\tPackage: \(priusAccPkgsDictionary[item]?.desc ?? "Accessory Package not Available")")
+                print("\t\t\t\t\t\tIncludes: \(priusAccPkgsDictionary[item]?.incls ?? "Invalid - Nothing Included")")
+            }
+        } else {
+            print("\t\t\t\t** No Accessory Packages Selected **")
         }
         
         print("\n\t\t\t\tExternal Accessories Selected:")
@@ -403,6 +463,14 @@ selectLEco2.priusIntAccBuild.removeAll()
 selectLEco2.addIntAcc(intAccName: IntAcc.AllWFL)
 selectLEco2.priusColor = CarColor.Red.rawValue
 selectLEco2.printModColor()
+
+//.. attempting to add packages
+selectLEco2.addAccPkg(accPkgName: AccPkgs.CMP)
+selectLEco2.addAccPkg(accPkgName: AccPkgs.FSFMLP)
+selectLEco2.priusColor = CarColor.Blue.rawValue
+selectLEco2.printModColor()
+
+
 
 
 
