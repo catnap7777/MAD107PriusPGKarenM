@@ -11,6 +11,21 @@ var priusModelDictionary = ["L Eco": (price: 24325.00, desc: "Economy"),
                             "XLE AWD-e": (price: 29375.00, desc: "Deluxe Limited Edition All Wheel Drive")
 ]
 
+var priusAccPkgs = ["ALLWFLP": (desc: "All-Weather Floor Liner Package", incls: "All-Weather Floor Liners, Cargo Liner"),
+                    "CMP": (desc: "Carpet Mat Package", incls: "Carpet Floor Mats, Carpet Cargo Mat"),
+                    "FSFMLP": (desc: "Four Season FLoor Mat/Liner Package", incls: "Carpet Floor Mats, Carpet Cargo Mat, All-Weather Floor Liners"),
+                    "PAP": (desc: "Preferred Accessory Package", incls: "Carpet Floor Mats, Carpet Cargo Mat, Rear Bumper Applique, Cargo Net-Envelope"),
+                    "PP3": (desc: "Protection Package #3", incls: "Body Side Moldings, Door Edge Guards, Rear Bumper Applique")
+]
+
+enum AccPkgs {
+    case ALLWFLP(desc: String, incls: String)
+    case CMP(desc: String, incls: String)
+    case FSFMLP(desc: String, incls: String)
+    case PAP(desc: String, incls: String)
+    case PP3(desc: String, incls: String)
+}
+
 enum CarColor: String {
     case Blue = "Electric Storm Blue"
     case Pearl = "Blizzard Pearl"
@@ -50,6 +65,7 @@ enum IntAcc: String {
     case UnivTH = "Universal Table Holder"
 }
 
+
 class Prius2020 {
     
     var priusModel: String
@@ -64,16 +80,6 @@ class Prius2020 {
     }
     
     func addExtAcc(extAccName: ExtAcc) {
-        
-//        var priusExtAcc: [String] = []
-//
-//        print(extAccName.rawValue)
-//        priusExtAcc.append(extAccName.rawValue)
-//
-//        for item in priusExtAcc {
-//            print(item)
-//        }
-        
         priusExtAccBuild.append(extAccName.rawValue)
     }
     
