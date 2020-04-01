@@ -89,7 +89,7 @@ class Prius2020 {
     
     func printModColor() {
         
-        print("\n*********************************************************************************")
+        print("\n\n*********************************************************************************")
         print("**              Congratulations on your 2020 Prius purchase!                   **")
         print("*********************************************************************************")
         print("\n\t\tYou've selected:  \n\n\t\t\t\tModel: \(priusModel)   Color: \(priusColor)")
@@ -107,9 +107,43 @@ class Prius2020 {
     }
 }
 
-class PriusLE: Prius2020 {
-    
+class PriusLEco: Prius2020 {
 //    var kamTest: String = "this is a test"
+    //var kamTest2: Int
+    var kamModel: String
+    
+    override init(model: String, color: CarColor) {
+        //self.kamTest2 = 0
+        //self.kamModel = model
+        self.kamModel = "L Eco"
+        super.init(model: "L Eco", color: color)
+    }
+    
+    override func printModColor() {
+        super.printModColor()
+        print("\n\t\t\tModel L Eco: \(priusModelDictionary[kamModel]?.desc ?? "nf")")
+        
+        var stdEquip = ["58/53 est. mpg","15-in. 5-spoke alloy wheels with full wheel covers and P195/65R15 tires",
+                        "7-in. touch-screen with Apple CarPlay & Amazon Alexa compatible",
+                        "Two rear USB 2.1A ports", "Toyota Safety Sense™ P (TSS-P) standard",
+                        "Safety Connect",
+                        "24-hour Roadside Assistance for three years and unlimited miles",
+                        "Up to 27.4 cu. ft. of cargo space"
+        ]
+        
+        var i = 1
+        print("\nStandard Equipment:")
+        print("................................................................................")
+        for item in stdEquip {
+            print("\(i). \(item)")
+            i += 1
+        }
+    }
+    
+}
+
+class PriusLE: Prius2020 {
+    //    var kamTest: String = "this is a test"
     //var kamTest2: Int
     var kamModel: String
     
@@ -123,33 +157,207 @@ class PriusLE: Prius2020 {
     override func printModColor() {
         super.printModColor()
         print("\n\t\t\tModel LE: \(priusModelDictionary[kamModel]?.desc ?? "nf")")
+        
+        var stdEquip = ["54/50 est. mpg",
+                        "Toyota Safety Sense P (TSS-P) standard",
+                        "Blind Spot Monitor (BSM) with Rear Cross-Traffic Alert (RCTA)",
+                        "Intelligent Clearance Sonar (ICS) with Intelligent Parking Assist (IPA)",
+                        "Up to 24.6 cu. ft. of Cargo Space"]
+        var i = 1
+        print("\nStandard Equipment:")
+        print("................................................................................")
+        for item in stdEquip {
+            print("\(i). \(item)")
+            i += 1
+        }
     }
-    
     
 }
 
-var selectPrius = Prius2020(model: "Limited", color: CarColor.Blue)
-selectPrius.printModColor()
+class PriusXLE: Prius2020 {
+    //    var kamTest: String = "this is a test"
+    //var kamTest2: Int
+    var kamModel: String
+    
+    override init(model: String, color: CarColor) {
+        //self.kamTest2 = 0
+        //self.kamModel = model
+        self.kamModel = "XLE"
+        super.init(model: "XLE", color: color)
+    }
+    
+    override func printModColor() {
+        super.printModColor()
+        print("\n\t\t\tModel XLE: \(priusModelDictionary[kamModel]?.desc ?? "nf")")
+        
+        var stdEquip = ["54/50 est. mpg",
+                        "Toyota Safety Sense P (TSS-P) standard",
+                        "17-in. 5-spoke alloy wheels with titanium-finished wheel inserts and P215/45R17 tires",
+                        "SofTex®-trimmed 61 heated front seats with 8-way power-adjustable driver's seat \n\t\tincluding power lumbar support and 4-way adjustable front passenger seat",
+                        "Qi-compatible wireless smartphone charging with charge indicator light",
+                        "Rain-sensing variable intermittent windshield wipers",
+                        "SofTex®-trimmed heated tilt/telescopic steering wheel",
+                        "Smart Key System on three doors with Push Button Start and remote illuminated entry"
+                        ]
+        
+        var i = 1
+        print("\nStandard Equipment:")
+        print("................................................................................")
+        for item in stdEquip {
+            print("\(i). \(item)")
+            i += 1
+        }
+    }
+    
+}
 
-var selectLE = PriusLE(model: "XLE", color: CarColor.Pearl)
+class PriusLimited: Prius2020 {
+    //    var kamTest: String = "this is a test"
+    //var kamTest2: Int
+    var kamModel: String
+    
+    override init(model: String, color: CarColor) {
+        //self.kamTest2 = 0
+        //self.kamModel = model
+        self.kamModel = "Limited"
+        super.init(model: "Limited", color: color)
+    }
+    
+    override func printModColor() {
+        super.printModColor()
+        print("\n\t\t\tModel Limited: \(priusModelDictionary[kamModel]?.desc ?? "nf")")
+        
+        var stdEquip = ["54/50 est. mpg",
+                        "Toyota Safety Sense P (TSS-P) standard",
+                        "Adaptive Front-Lighting System (AFS) with auto-leveling headlights",
+                        "17-in. 5-spoke alloy wheels with titanium-finished wheel inserts and P215/45R17 tires",
+                        "Premium JBL® Audio with Integrated Navigation and 11.6-in. high-resolution touch-screen and Apple CarPlay & Amazon Alexa compatible",
+                        "Color Head-Up Display (HUD)"
+        ]
+        
+        var i = 1
+        print("\nStandard Equipment:")
+        print("................................................................................")
+        for item in stdEquip {
+            print("\(i). \(item)")
+            i += 1
+        }
+    }
+    
+}
+
+class PriusLEAWDe: Prius2020 {
+    //    var kamTest: String = "this is a test"
+    //var kamTest2: Int
+    var kamModel: String
+    
+    override init(model: String, color: CarColor) {
+        //self.kamTest2 = 0
+        //self.kamModel = model
+        self.kamModel = "LE AWD-e"
+        super.init(model: "LE AWD-e", color: color)
+    }
+    
+    override func printModColor() {
+        super.printModColor()
+        print("\n\t\t\tModel LE AWD-e: \(priusModelDictionary[kamModel]?.desc ?? "nf")")
+        
+        var stdEquip = ["52/48 est. mpg",
+                        "Electronic On-Demand Compact All-Wheel Drive (AWD-e)",
+                        "Toyota Safety Sense P (TSS-P) standard",
+                        "15-in. 5-spoke alloy wheels with two-tone wheel covers and P195/65R15 tires",
+                        "Integrated fog lights with LED accent lights",
+                        "Up to 24.6 cu. ft. of cargo space"
+        ]
+        
+        var i = 1
+        print("\nStandard Equipment:")
+        print("................................................................................")
+        for item in stdEquip {
+            print("\(i). \(item)")
+            i += 1
+        }
+    }
+    
+}
+
+class PriusXLEAWDe: Prius2020 {
+    //    var kamTest: String = "this is a test"
+    //var kamTest2: Int
+    var kamModel: String
+    
+    override init(model: String, color: CarColor) {
+        //self.kamTest2 = 0
+        //self.kamModel = model
+        self.kamModel = "XLE AWD-e"
+        super.init(model: "XLE AWD-e", color: color)
+    }
+    
+    override func printModColor() {
+        super.printModColor()
+        print("\n\t\t\tModel XLE AWD-e: \(priusModelDictionary[kamModel]?.desc ?? "nf")")
+        
+        var stdEquip = ["52/48 est. mpg",
+                        "Electronic On-Demand Compact All-Wheel Drive (AWD-e)",
+                        "Toyota Safety Sense P (TSS-P) standard",
+                        "SofTex®-trimmed heated tilt/telescopic steering wheel",
+                        "Qi-compatible wireless smartphone charging with charge indicator light",
+                        "SofTex®-trimmed heated front seats with 6-way adjustable driver's seat"
+        ]
+        
+        var i = 1
+        print("\nStandard Equipment:")
+        print("................................................................................")
+        for item in stdEquip {
+            print("\(i). \(item)")
+            i += 1
+        }
+    }
+    
+}
+
+
+//var selectPrius = Prius2020(model: "Limited", color: CarColor.Blue)
+//selectPrius.printModColor()
+//
+//var selectLE = PriusLE(model: "XLE", color: CarColor.Pearl)
+//selectLE.printModColor()
+//
+//selectLE.priusColor = CarColor.Black.rawValue
+//selectLE.printModColor()
+//selectLE.priusModel = "ABC"
+//selectLE.printModColor()
+//
+//selectLE.priusColor = CarColor.Red.rawValue
+//selectLE.priusModel = "L Eco"
+//selectLE.printModColor()
+//
+//selectLE.priusColor = CarColor.Sea.rawValue
+//selectLE.priusModel = "LE"
+//selectLE.printModColor()
+//
+//selectLE.priusColor = CarColor.Red.rawValue
+//selectLE.priusModel = "L Eco"
+//selectLE.printModColor()
+
+var selectLEco = PriusLEco(model: "L Eco", color: CarColor.Gray)
+selectLEco.printModColor()
+
+var selectLE = PriusLE(model: "LE", color: CarColor.Black)
 selectLE.printModColor()
 
-selectLE.priusColor = CarColor.Black.rawValue
-selectLE.printModColor()
-selectLE.priusModel = "ABC"
-selectLE.printModColor()
+var selectXLE = PriusXLE(model: "XLE", color: CarColor.Sea)
+selectXLE.printModColor()
 
-selectLE.priusColor = CarColor.Red.rawValue
-selectLE.priusModel = "L Eco"
-selectLE.printModColor()
+var selectLimited = PriusLimited(model: "Limited", color: CarColor.Red)
+selectLimited.printModColor()
 
-selectLE.priusColor = CarColor.Sea.rawValue
-selectLE.priusModel = "LE"
-selectLE.printModColor()
+var selectLEAWDe = PriusLEAWDe(model: "LE AWD-e", color: CarColor.Silver)
+selectLEAWDe.printModColor()
 
-selectLE.priusColor = CarColor.Red.rawValue
-selectLE.priusModel = "L Eco"
-selectLE.printModColor()
+var selectXLEAWDe = PriusXLEAWDe(model: "XLE AWD-e", color: CarColor.Blue)
+selectXLEAWDe.printModColor()
+
 
 
 
