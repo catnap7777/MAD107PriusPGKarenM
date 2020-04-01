@@ -14,7 +14,7 @@ var priusModelDictionary = ["L Eco": (price: 24325.00, desc: "Economy"),
 var priusAccPkgsDictionary = ["ALLWFLP": (desc: "All-Weather Floor Liner Package", incls: "All-Weather Floor Liners, Cargo Liner"),
                               "CMP": (desc: "Carpet Mat Package", incls: "Carpet Floor Mats, Carpet Cargo Mat"),
                               "FSFMLP": (desc: "Four Season FLoor Mat/Liner Package", incls: "Carpet Floor Mats, Carpet Cargo Mat, All-Weather Floor Liners"),
-                              "PAP": (desc: "Preferred Accessory Package", incls: "Carpet Floor Mats, Carpet Cargo Mat, Rear Bumper Applique, Cargo Net-Envelope"),
+                              "PAP": (desc: "Preferred Accessory Package", incls: "Carpet Floor Mats, Carpet Cargo Mat, Rear Bumper Applique, Cargo Net - Envelope"),
                               "PP3": (desc: "Protection Package #3", incls: "Body Side Moldings, Door Edge Guards, Rear Bumper Applique")
 ]
 
@@ -92,57 +92,83 @@ class Prius2020 {
     
     func addAccPkg(accPkgName: AccPkgs) {
         
-        var i = 0
         
         switch accPkgName {
         case .ALLWFLP:
+            //.. add accessory package
             priusAccPkgBuild.append(AccPkgs.ALLWFLP.rawValue)
-            for intAccItem in priusIntAccBuild {
-                if (intAccItem == IntAcc.AllWFL.rawValue) || (intAccItem == IntAcc.CargoL.rawValue) {
-                    priusIntAccBuild.remove(at: i)
-                }
-                i += 1
+            //.. remove any individual accessories that were added that are already part of the accessory package selected
+            if let idx = priusIntAccBuild.firstIndex(of: IntAcc.AllWFL.rawValue) {
+                priusIntAccBuild.remove(at: idx)
             }
+            if let idx = priusIntAccBuild.firstIndex(of: IntAcc.CargoL.rawValue) {
+                priusIntAccBuild.remove(at: idx)
+            }
+            
         case .CMP:
+            //.. add accessory package
             priusAccPkgBuild.append(AccPkgs.CMP.rawValue)
-            print("\n\n\ncase = CMP")
-            for intAccItem in priusIntAccBuild {
-                print("in for loop")
-                print(intAccItem)
-                if (intAccItem == IntAcc.CarpetCM.rawValue) || (intAccItem == IntAcc.CarpetFM.rawValue) {
-                    priusIntAccBuild.remove(at: i)
-                    print("in if stmt")
-                }
-                i += 1
+            
+            //.. remove any individual accessories that were added that are already part of the accessory package selected
+            if let idx = priusIntAccBuild.firstIndex(of: IntAcc.CarpetCM.rawValue) {
+                priusIntAccBuild.remove(at: idx)
             }
+            if let idx = priusIntAccBuild.firstIndex(of: IntAcc.CarpetFM.rawValue) {
+                priusIntAccBuild.remove(at: idx)
+            }
+            
         case .FSFMLP:
+            //.. add accessory package
             priusAccPkgBuild.append(AccPkgs.FSFMLP.rawValue)
+            //.. remove any individual accessories that were added that are already part of the accessory package selected
+            if let idx = priusIntAccBuild.firstIndex(of: IntAcc.CarpetCM.rawValue) {
+                priusIntAccBuild.remove(at: idx)
+            }
+            if let idx = priusIntAccBuild.firstIndex(of: IntAcc.CarpetFM.rawValue) {
+                priusIntAccBuild.remove(at: idx)
+            }
+            if let idx = priusIntAccBuild.firstIndex(of: IntAcc.AllWFL.rawValue) {
+                priusIntAccBuild.remove(at: idx)
+            }
+            
         case .PAP:
+            //.. add accessory package
             priusAccPkgBuild.append(AccPkgs.PAP.rawValue)
+            //.. remove any individual accessories (internal) that were added that are already part of the accessory package selected
+            if let idx = priusIntAccBuild.firstIndex(of: IntAcc.CarpetCM.rawValue) {
+                priusIntAccBuild.remove(at: idx)
+            }
+            if let idx = priusIntAccBuild.firstIndex(of: IntAcc.CarpetFM.rawValue) {
+                priusIntAccBuild.remove(at: idx)
+            }
+            if let idx = priusIntAccBuild.firstIndex(of: IntAcc.CargoN.rawValue) {
+                priusIntAccBuild.remove(at: idx)
+            }
+            
+            //.. remove any individual accessories (external) that were added that are already part of the accessory package selected
+            if let idx = priusExtAccBuild.firstIndex(of: ExtAcc.RearBA.rawValue) {
+                priusExtAccBuild.remove(at: idx)
+            }
+            
         case .PP3:
+            //.. add accessory package
             priusAccPkgBuild.append(AccPkgs.PP3.rawValue)
+            //.. remove any individual accessories that were added that are already part of the accessory package selected
+            if let idx = priusExtAccBuild.firstIndex(of: ExtAcc.RearBA.rawValue) {
+                priusExtAccBuild.remove(at: idx)
+            }
+            if let idx = priusExtAccBuild.firstIndex(of: ExtAcc.BodySM.rawValue) {
+                priusExtAccBuild.remove(at: idx)
+            }
+            if let idx = priusExtAccBuild.firstIndex(of: ExtAcc.DoorEG.rawValue) {
+                priusExtAccBuild.remove(at: idx)
+            }
+            
         case .NONE:
+            //.. add accessory package
             priusAccPkgBuild.append(AccPkgs.NONE.rawValue)
         }
         
-    
-       
-//        switch accPkgName {
-//        case .ALLWFLP(var desc, var incls):
-//            desc = priusAccPkgsDictionary["ALLWFLP"]?.desc ?? "No Description"
-//            incls = priusAccPkgsDictionary["ALLWFLP"]?.desc ?? "No Items"
-//            priusAccPkgBuild.append("ALLWFLP")
-//        case .CMP(var desc, var incls):
-//            print("hi")
-//        case .FSFMLP(var desc, var incls):
-//            print("hi")
-//        case .PAP(var desc, var incls):
-//            print("hi")
-//        case .PP3(var desc, var incls):
-//            print("hi")
-//        case .NONE(var desc, var incls):
-//            print("hi")
-//        }
         
     }
     
@@ -456,32 +482,35 @@ class PriusXLEAWDe: Prius2020 {
 var selectLEco2 = PriusLEco(model: "L Eco", color: CarColor.Gray)
 
 //.. adding external accessories
-selectLEco2.addExtAcc(extAccName: ExtAcc.BodySM)
-selectLEco2.addExtAcc(extAccName: ExtAcc.AlloyWL)
-selectLEco2.addExtAcc(extAccName: ExtAcc.AeroSS)
-selectLEco2.addIntAcc(intAccName: IntAcc.CarpetCM)
-selectLEco2.addIntAcc(intAccName: IntAcc.CoinHAC)
-selectLEco2.printModColor()
-
-//..adding internal accessories
-selectLEco2.addIntAcc(intAccName: IntAcc.AllWFL)
-selectLEco2.printModColor()
-
-//..removing internal accessories in the array and add a different one and change the car color
-selectLEco2.priusIntAccBuild.removeAll()
-selectLEco2.addIntAcc(intAccName: IntAcc.AllWFL)
-selectLEco2.priusColor = CarColor.Red.rawValue
-selectLEco2.printModColor()
+//selectLEco2.addExtAcc(extAccName: ExtAcc.BodySM)
+//selectLEco2.addExtAcc(extAccName: ExtAcc.AlloyWL)
+//selectLEco2.addExtAcc(extAccName: ExtAcc.AeroSS)
+//selectLEco2.addIntAcc(intAccName: IntAcc.CarpetCM)
+//selectLEco2.addIntAcc(intAccName: IntAcc.CoinHAC)
+//selectLEco2.printModColor()
+//
+////..adding internal accessories
+//selectLEco2.addIntAcc(intAccName: IntAcc.AllWFL)
+//selectLEco2.printModColor()
+//
+////..removing internal accessories in the array and add a different one and change the car color
+//selectLEco2.priusIntAccBuild.removeAll()
+//selectLEco2.addIntAcc(intAccName: IntAcc.AllWFL)
+//selectLEco2.priusColor = CarColor.Red.rawValue
+//selectLEco2.printModColor()
 
 //.. attempting to add packages
 selectLEco2.priusIntAccBuild.removeAll()
 selectLEco2.priusExtAccBuild.removeAll()
 selectLEco2.priusAccPkgBuild.removeAll()
-selectLEco2.addAccPkg(accPkgName: AccPkgs.CMP)
 selectLEco2.addIntAcc(intAccName: IntAcc.CarpetCM)
 selectLEco2.addIntAcc(intAccName: IntAcc.CarpetFM)
 selectLEco2.addIntAcc(intAccName: IntAcc.EmergK)
 selectLEco2.addIntAcc(intAccName: IntAcc.FirstAK)
+selectLEco2.addExtAcc(extAccName: ExtAcc.DoorEG)
+selectLEco2.addExtAcc(extAccName: ExtAcc.BlackoutWI)
+selectLEco2.addAccPkg(accPkgName: AccPkgs.CMP)
+selectLEco2.addAccPkg(accPkgName: AccPkgs.PP3)
 selectLEco2.priusColor = CarColor.Blue.rawValue
 selectLEco2.printModColor()
 
