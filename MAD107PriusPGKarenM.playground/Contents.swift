@@ -58,15 +58,6 @@ enum IntAcc: String {
     case UnivTH = "Universal Table Holder"
 }
 
-//enum AccPkgs {
-//    case NONE(desc: String, incls: String)
-//    case ALLWFLP(desc: String, incls: String)
-//    case CMP(desc: String, incls: String)
-//    case FSFMLP(desc: String, incls: String)
-//    case PAP(desc: String, incls: String)
-//    case PP3(desc: String, incls: String)
-//}
-
 enum AccPkgs: String {
     case NONE = "NONE"
     case ALLWFLP = "ALLWFLP"
@@ -101,11 +92,29 @@ class Prius2020 {
     
     func addAccPkg(accPkgName: AccPkgs) {
         
+        var i = 0
+        
         switch accPkgName {
         case .ALLWFLP:
             priusAccPkgBuild.append(AccPkgs.ALLWFLP.rawValue)
+            for intAccItem in priusIntAccBuild {
+                if (intAccItem == IntAcc.AllWFL.rawValue) || (intAccItem == IntAcc.CargoL.rawValue) {
+                    priusIntAccBuild.remove(at: i)
+                }
+                i += 1
+            }
         case .CMP:
             priusAccPkgBuild.append(AccPkgs.CMP.rawValue)
+            print("\n\n\ncase = CMP")
+            for intAccItem in priusIntAccBuild {
+                print("in for loop")
+                print(intAccItem)
+                if (intAccItem == IntAcc.CarpetCM.rawValue) || (intAccItem == IntAcc.CarpetFM.rawValue) {
+                    priusIntAccBuild.remove(at: i)
+                    print("in if stmt")
+                }
+                i += 1
+            }
         case .FSFMLP:
             priusAccPkgBuild.append(AccPkgs.FSFMLP.rawValue)
         case .PAP:
@@ -465,8 +474,14 @@ selectLEco2.priusColor = CarColor.Red.rawValue
 selectLEco2.printModColor()
 
 //.. attempting to add packages
+selectLEco2.priusIntAccBuild.removeAll()
+selectLEco2.priusExtAccBuild.removeAll()
+selectLEco2.priusAccPkgBuild.removeAll()
 selectLEco2.addAccPkg(accPkgName: AccPkgs.CMP)
-selectLEco2.addAccPkg(accPkgName: AccPkgs.FSFMLP)
+selectLEco2.addIntAcc(intAccName: IntAcc.CarpetCM)
+selectLEco2.addIntAcc(intAccName: IntAcc.CarpetFM)
+selectLEco2.addIntAcc(intAccName: IntAcc.EmergK)
+selectLEco2.addIntAcc(intAccName: IntAcc.FirstAK)
 selectLEco2.priusColor = CarColor.Blue.rawValue
 selectLEco2.printModColor()
 
