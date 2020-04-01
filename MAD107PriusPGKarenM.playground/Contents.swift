@@ -330,7 +330,8 @@ class PriusXLEAWDe: Prius2020 {
     
 }
 
-
+//.. for testing purposes
+//
 //var selectPrius = Prius2020(model: "Limited", color: CarColor.Blue)
 //selectPrius.printModColor()
 //
@@ -356,6 +357,7 @@ class PriusXLEAWDe: Prius2020 {
 
 
 //.... save these... they work
+//
 //var selectLEco = PriusLEco(model: "L Eco", color: CarColor.Gray)
 //selectLEco.printModColor()
 //
@@ -375,8 +377,10 @@ class PriusXLEAWDe: Prius2020 {
 //selectXLEAWDe.printModColor()
 
 
-// trying to get accessories to work
+//.. instantiate subclass for model "L Eco"
 var selectLEco2 = PriusLEco(model: "L Eco", color: CarColor.Gray)
+
+//.. adding external accessories
 selectLEco2.addExtAcc(extAccName: ExtAcc.BodySM)
 selectLEco2.addExtAcc(extAccName: ExtAcc.AlloyWL)
 selectLEco2.addExtAcc(extAccName: ExtAcc.AeroSS)
@@ -384,11 +388,14 @@ selectLEco2.addIntAcc(intAccName: IntAcc.CarpetCM)
 selectLEco2.addIntAcc(intAccName: IntAcc.CoinHAC)
 selectLEco2.printModColor()
 
+//..adding internal accessories
 selectLEco2.addIntAcc(intAccName: IntAcc.AllWFL)
 selectLEco2.printModColor()
 
+//..removing internal accessories in the array and add a different one and change the car color
 selectLEco2.priusIntAccBuild.removeAll()
 selectLEco2.addIntAcc(intAccName: IntAcc.AllWFL)
+selectLEco2.priusColor = CarColor.Red.rawValue
 selectLEco2.printModColor()
 
 
