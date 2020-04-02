@@ -83,11 +83,68 @@ class Prius2020 {
     }
     
     func addExtAcc(extAccName: ExtAcc) {
-        priusExtAccBuild.append(extAccName.rawValue)
+        //ADD ACCESSORIES ONLY IF THEY ALREADY HAVEN'T BEEN ADDED AS PART OF AN ACCESSORY PACKAGE
+        switch extAccName {
+        //.. add if following accessories are not part of a package at all
+            case .AeroSS, .SpokeAW, .AlloyWL, .BlackoutWI, .PaintPF, .RearBP, .RemovableCB:
+                priusExtAccBuild.append(extAccName.rawValue)
+        //.. add if following accessories are not part of a package that was already added
+            case .BodySM:
+                if (!priusAccPkgBuild.contains(AccPkgs.PP3.rawValue)) {
+                    priusExtAccBuild.append(extAccName.rawValue)
+                }
+            case .DoorEG:
+                if (!priusAccPkgBuild.contains(AccPkgs.PP3.rawValue)) {
+                    priusExtAccBuild.append(extAccName.rawValue)
+                }
+            case .RearBA:
+                if (!priusAccPkgBuild.contains(AccPkgs.PP3.rawValue) ||
+                    !priusAccPkgBuild.contains(AccPkgs.PAP.rawValue)) {
+                    
+                    priusExtAccBuild.append(extAccName.rawValue)
+                }
+        }
+     
     }
     
     func addIntAcc(intAccName: IntAcc) {
-        priusIntAccBuild.append(intAccName.rawValue)
+        //ADD ACCESSORIES ONLY IF THEY ALREADY HAVEN'T BEEN ADDED AS PART OF AN ACCESSORY PACKAGE
+        switch intAccName {
+        //.. add if following accessories are not part of a package at all
+            case .CargoT, .CoinHAC, .EmergK, .FirstAK, .FlessHM, .IllumDS, .SecurS, .UnivTH:
+                priusIntAccBuild.append(intAccName.rawValue)
+        //.. add if following accessories are not part of a package that was already added
+            case .AllWFL:
+                if (!priusAccPkgBuild.contains(AccPkgs.ALLWFLP.rawValue) ||
+                    !priusAccPkgBuild.contains(AccPkgs.FSFMLP.rawValue)) {
+                    
+                    priusIntAccBuild.append(intAccName.rawValue)
+                }
+            case .CargoN:
+                if (!priusAccPkgBuild.contains(AccPkgs.PAP.rawValue)) {
+                    priusIntAccBuild.append(intAccName.rawValue)
+                }
+            case .CargoL:
+                if (!priusAccPkgBuild.contains(AccPkgs.ALLWFLP.rawValue)) {
+                    priusIntAccBuild.append(intAccName.rawValue)
+                }
+            case .CarpetCM:
+                if (!priusAccPkgBuild.contains(AccPkgs.CMP.rawValue) ||
+                    !priusAccPkgBuild.contains(AccPkgs.FSFMLP.rawValue) ||
+                    !priusAccPkgBuild.contains(AccPkgs.PAP.rawValue)) {
+                    
+                    priusIntAccBuild.append(intAccName.rawValue)
+                }
+            case .CarpetFM:
+                if (!priusAccPkgBuild.contains(AccPkgs.CMP.rawValue) ||
+                    !priusAccPkgBuild.contains(AccPkgs.FSFMLP.rawValue) ||
+                    !priusAccPkgBuild.contains(AccPkgs.PAP.rawValue)) {
+                    
+                    priusIntAccBuild.append(intAccName.rawValue)
+                }
+            
+        }
+        
     }
     
     func addAccPkg(accPkgName: AccPkgs) {
