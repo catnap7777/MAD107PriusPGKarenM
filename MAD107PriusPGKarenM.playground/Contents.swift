@@ -279,6 +279,7 @@ class Prius2020 {
     }
 }
 
+//.. subclass for Prius Model L Eco
 class PriusLEco: Prius2020 {
 //    var kamTest: String = "this is a test"
     //var kamTest2: Int
@@ -295,7 +296,7 @@ class PriusLEco: Prius2020 {
         super.printModColor()
         print("\nModel L Eco: \(priusModelDictionary[kamModel]?.desc ?? "nf")")
         
-        var stdEquip = ["58/53 est. mpg","15-in. 5-spoke alloy wheels with full wheel covers and P195/65R15 tires",
+        let stdEquip = ["58/53 est. mpg","15-in. 5-spoke alloy wheels with full wheel covers and P195/65R15 tires",
                         "7-in. touch-screen with Apple CarPlay & Amazon Alexa compatible",
                         "Two rear USB 2.1A ports", "Toyota Safety Sense™ P (TSS-P) standard",
                         "Safety Connect",
@@ -314,6 +315,7 @@ class PriusLEco: Prius2020 {
     
 }
 
+//.. subclass for Prius Model LE
 class PriusLE: Prius2020 {
     //    var kamTest: String = "this is a test"
     //var kamTest2: Int
@@ -330,7 +332,7 @@ class PriusLE: Prius2020 {
         super.printModColor()
         print("\nModel LE: \(priusModelDictionary[kamModel]?.desc ?? "nf")")
         
-        var stdEquip = ["54/50 est. mpg",
+        let stdEquip = ["54/50 est. mpg",
                         "Toyota Safety Sense P (TSS-P) standard",
                         "Blind Spot Monitor (BSM) with Rear Cross-Traffic Alert (RCTA)",
                         "Intelligent Clearance Sonar (ICS) with Intelligent Parking Assist (IPA)",
@@ -346,6 +348,7 @@ class PriusLE: Prius2020 {
     
 }
 
+//.. subclass for Prius Model XLE
 class PriusXLE: Prius2020 {
     //    var kamTest: String = "this is a test"
     //var kamTest2: Int
@@ -362,7 +365,7 @@ class PriusXLE: Prius2020 {
         super.printModColor()
         print("\nModel XLE: \(priusModelDictionary[kamModel]?.desc ?? "nf")")
         
-        var stdEquip = ["54/50 est. mpg",
+        let stdEquip = ["54/50 est. mpg",
                         "Toyota Safety Sense P (TSS-P) standard",
                         "17-in. 5-spoke alloy wheels with titanium-finished wheel inserts and P215/45R17 tires",
                         "SofTex®-trimmed 61 heated front seats with 8-way power-adjustable driver's seat \n\t\tincluding power lumbar support and 4-way adjustable front passenger seat",
@@ -383,6 +386,7 @@ class PriusXLE: Prius2020 {
     
 }
 
+//.. subclass for Prius Model Limited
 class PriusLimited: Prius2020 {
     //    var kamTest: String = "this is a test"
     //var kamTest2: Int
@@ -399,7 +403,7 @@ class PriusLimited: Prius2020 {
         super.printModColor()
         print("\nModel Limited: \(priusModelDictionary[kamModel]?.desc ?? "nf")")
         
-        var stdEquip = ["54/50 est. mpg",
+        let stdEquip = ["54/50 est. mpg",
                         "Toyota Safety Sense P (TSS-P) standard",
                         "Adaptive Front-Lighting System (AFS) with auto-leveling headlights",
                         "17-in. 5-spoke alloy wheels with titanium-finished wheel inserts and P215/45R17 tires",
@@ -418,9 +422,9 @@ class PriusLimited: Prius2020 {
     
 }
 
+//.. subclass for Prius Model LE AWD-e
 class PriusLEAWDe: Prius2020 {
-    //    var kamTest: String = "this is a test"
-    //var kamTest2: Int
+    
     var kamModel: String
     
     override init(model: String, color: CarColor) {
@@ -434,7 +438,7 @@ class PriusLEAWDe: Prius2020 {
         super.printModColor()
         print("\nModel LE AWD-e: \(priusModelDictionary[kamModel]?.desc ?? "nf")")
         
-        var stdEquip = ["52/48 est. mpg",
+        let stdEquip = ["52/48 est. mpg",
                         "Electronic On-Demand Compact All-Wheel Drive (AWD-e)",
                         "Toyota Safety Sense P (TSS-P) standard",
                         "15-in. 5-spoke alloy wheels with two-tone wheel covers and P195/65R15 tires",
@@ -453,6 +457,7 @@ class PriusLEAWDe: Prius2020 {
     
 }
 
+//.. subclass for Prius Model XLE AWD-e
 class PriusXLEAWDe: Prius2020 {
     //    var kamTest: String = "this is a test"
     //var kamTest2: Int
@@ -469,7 +474,7 @@ class PriusXLEAWDe: Prius2020 {
         super.printModColor()
         print("\n\t\t\tModel XLE AWD-e: \(priusModelDictionary[kamModel]?.desc ?? "nf")")
         
-        var stdEquip = ["52/48 est. mpg",
+        let stdEquip = ["52/48 est. mpg",
                         "Electronic On-Demand Compact All-Wheel Drive (AWD-e)",
                         "Toyota Safety Sense P (TSS-P) standard",
                         "SofTex®-trimmed heated tilt/telescopic steering wheel",
@@ -488,87 +493,71 @@ class PriusXLEAWDe: Prius2020 {
     
 }
 
-//.. for testing purposes
-//
-//var selectPrius = Prius2020(model: "Limited", color: CarColor.Blue)
-//selectPrius.printModColor()
-//
-//var selectLE = PriusLE(model: "XLE", color: CarColor.Pearl)
-//selectLE.printModColor()
-//
-//selectLE.priusColor = CarColor.Black.rawValue
-//selectLE.printModColor()
-//selectLE.priusModel = "ABC"
-//selectLE.printModColor()
-//
-//selectLE.priusColor = CarColor.Red.rawValue
-//selectLE.priusModel = "L Eco"
-//selectLE.printModColor()
-//
-//selectLE.priusColor = CarColor.Sea.rawValue
-//selectLE.priusModel = "LE"
-//selectLE.printModColor()
-//
-//selectLE.priusColor = CarColor.Red.rawValue
-//selectLE.priusModel = "L Eco"
-//selectLE.printModColor()
-
-
-//.... save these... they work
-//
-//var selectLEco = PriusLEco(model: "L Eco", color: CarColor.Gray)
-//selectLEco.printModColor()
-//
-//var selectLE = PriusLE(model: "LE", color: CarColor.Black)
-//selectLE.printModColor()
-//
-//var selectXLE = PriusXLE(model: "XLE", color: CarColor.Sea)
-//selectXLE.printModColor()
-//
-//var selectLimited = PriusLimited(model: "Limited", color: CarColor.Red)
-//selectLimited.printModColor()
-//
-//var selectLEAWDe = PriusLEAWDe(model: "LE AWD-e", color: CarColor.Silver)
-//selectLEAWDe.printModColor()
-//
-//var selectXLEAWDe = PriusXLEAWDe(model: "XLE AWD-e", color: CarColor.Blue)
-//selectXLEAWDe.printModColor()
-
-
+//...............................................................................................
+//.. Instatiation and "Calls" to funcions
+//..
 //.. instantiate subclass for model "L Eco"
 var selectLEco2 = PriusLEco(model: "L Eco", color: CarColor.Gray)
 
+//...............................................................................................
+//********  GRAY COLOR CAR
 //.. adding external accessories
-//selectLEco2.addExtAcc(extAccName: ExtAcc.BodySM)
-//selectLEco2.addExtAcc(extAccName: ExtAcc.AlloyWL)
-//selectLEco2.addExtAcc(extAccName: ExtAcc.AeroSS)
-//selectLEco2.addIntAcc(intAccName: IntAcc.CarpetCM)
-//selectLEco2.addIntAcc(intAccName: IntAcc.CoinHAC)
-//selectLEco2.printModColor()
-//
-////..adding internal accessories
-//selectLEco2.addIntAcc(intAccName: IntAcc.AllWFL)
-//selectLEco2.printModColor()
-//
-////..removing internal accessories in the array and add a different one and change the car color
-//selectLEco2.priusIntAccBuild.removeAll()
-//selectLEco2.addIntAcc(intAccName: IntAcc.AllWFL)
-//selectLEco2.priusColor = CarColor.Red.rawValue
-//selectLEco2.printModColor()
+selectLEco2.addExtAcc(extAccName: ExtAcc.BodySM)
+selectLEco2.addExtAcc(extAccName: ExtAcc.AlloyWL)
+selectLEco2.addExtAcc(extAccName: ExtAcc.AeroSS)
+selectLEco2.addIntAcc(intAccName: IntAcc.CarpetCM)
+selectLEco2.addIntAcc(intAccName: IntAcc.CoinHAC)
+selectLEco2.printModColor()
 
-//.. attempting to add packages
+//...............................................................................................
+//********  SEA COLOR CAR
+//..adding internal accessories
+selectLEco2.addIntAcc(intAccName: IntAcc.AllWFL)
+selectLEco2.priusColor = CarColor.Sea.rawValue
+selectLEco2.printModColor()
+
+//...............................................................................................
+//********  RED COLOR CAR
+//..removing internal accessories in the array and add a different one and change the car color
+selectLEco2.priusIntAccBuild.removeAll()
+selectLEco2.addIntAcc(intAccName: IntAcc.AllWFL)
+selectLEco2.priusColor = CarColor.Red.rawValue
+selectLEco2.printModColor()
+
+//...............................................................................................
+//********  BLUE COLOR CAR
+//.. adding accessory packages
+//.. clear all accessories and packages
 selectLEco2.priusIntAccBuild.removeAll()
 selectLEco2.priusExtAccBuild.removeAll()
 selectLEco2.priusAccPkgBuild.removeAll()
+//.. add internal accessories
 selectLEco2.addIntAcc(intAccName: IntAcc.CarpetCM)
 selectLEco2.addIntAcc(intAccName: IntAcc.CarpetFM)
 selectLEco2.addIntAcc(intAccName: IntAcc.EmergK)
 selectLEco2.addIntAcc(intAccName: IntAcc.FirstAK)
+//.. add external accessories
 selectLEco2.addExtAcc(extAccName: ExtAcc.DoorEG)
 selectLEco2.addExtAcc(extAccName: ExtAcc.BlackoutWI)
-selectLEco2.addAccPkg(accPkgName: AccPkgs.CMP)
-selectLEco2.addAccPkg(accPkgName: AccPkgs.PP3)
+//.. add accessory packages
+selectLEco2.addAccPkg(accPkgName: AccPkgs.CMP) // should also get "rid" of separate accessories CarpetCM, CarpetFM
+                                                    //that were "added" previously in lines above
+selectLEco2.addAccPkg(accPkgName: AccPkgs.PP3) // should also get "rid" of separate accessories DoorEG
+                                                    //that were "added" previously in lines above
+//.. change car color
 selectLEco2.priusColor = CarColor.Blue.rawValue
+//.. call function to print
+selectLEco2.printModColor()
+
+//...............................................................................................
+//********  PEARL COLOR CAR
+//.. attempt to add a few more accessories
+selectLEco2.priusColor = CarColor.Pearl.rawValue
+selectLEco2.addIntAcc(intAccName: IntAcc.FlessHM)
+selectLEco2.addIntAcc(intAccName: IntAcc.CarpetCM) // already part of a package, so should NOT be printed in internal accessories section of rpt
+selectLEco2.addIntAcc(intAccName: IntAcc.CarpetFM) // already part of a package, so should NOT be printed in internal accessories section of rpt
+selectLEco2.addExtAcc(extAccName: ExtAcc.BodySM)   // already part of a package, so should NOT be printed in internal accessories section of rpt
+selectLEco2.addExtAcc(extAccName: ExtAcc.PaintPF)
 selectLEco2.printModColor()
 
 
