@@ -98,7 +98,7 @@ class Prius2020 {
                     priusExtAccBuild.append(extAccName.rawValue)
                 }
             case .RearBA:
-                if (!priusAccPkgBuild.contains(AccPkgs.PP3.rawValue) ||
+                if (!priusAccPkgBuild.contains(AccPkgs.PP3.rawValue) &&
                     !priusAccPkgBuild.contains(AccPkgs.PAP.rawValue)) {
                     
                     priusExtAccBuild.append(extAccName.rawValue)
@@ -115,7 +115,7 @@ class Prius2020 {
                 priusIntAccBuild.append(intAccName.rawValue)
         //.. add if following accessories are not part of a package that was already added
             case .AllWFL:
-                if (!priusAccPkgBuild.contains(AccPkgs.ALLWFLP.rawValue) ||
+                if (!priusAccPkgBuild.contains(AccPkgs.ALLWFLP.rawValue) &&
                     !priusAccPkgBuild.contains(AccPkgs.FSFMLP.rawValue)) {
                     
                     priusIntAccBuild.append(intAccName.rawValue)
@@ -129,19 +129,20 @@ class Prius2020 {
                     priusIntAccBuild.append(intAccName.rawValue)
                 }
             case .CarpetCM:
-                if (!priusAccPkgBuild.contains(AccPkgs.CMP.rawValue) ||
-                    !priusAccPkgBuild.contains(AccPkgs.FSFMLP.rawValue) ||
+                if (!priusAccPkgBuild.contains(AccPkgs.CMP.rawValue) &&
+                    !priusAccPkgBuild.contains(AccPkgs.FSFMLP.rawValue) &&
                     !priusAccPkgBuild.contains(AccPkgs.PAP.rawValue)) {
                     
                     priusIntAccBuild.append(intAccName.rawValue)
+                    
                 }
             case .CarpetFM:
-                if (!priusAccPkgBuild.contains(AccPkgs.CMP.rawValue) ||
-                    !priusAccPkgBuild.contains(AccPkgs.FSFMLP.rawValue) ||
+                if (!priusAccPkgBuild.contains(AccPkgs.CMP.rawValue) &&
+                    !priusAccPkgBuild.contains(AccPkgs.FSFMLP.rawValue) &&
                     !priusAccPkgBuild.contains(AccPkgs.PAP.rawValue)) {
                     
                     priusIntAccBuild.append(intAccName.rawValue)
-                }
+                    }
             
         }
         
@@ -560,6 +561,15 @@ selectLEco2.addExtAcc(extAccName: ExtAcc.BodySM)   // already part of a package,
 selectLEco2.addExtAcc(extAccName: ExtAcc.PaintPF)
 selectLEco2.printModColor()
 
+//...............................................................................................
+//********  PEARL COLOR CAR
+//.. attempt to add more packages
+selectLEco2.priusColor = CarColor.Black.rawValue
+selectLEco2.addExtAcc(extAccName: ExtAcc.DoorEG) // already part of a package, so should NOT be printed in internal accessories section of rpt
+selectLEco2.addIntAcc(intAccName: IntAcc.AllWFL) // added but then removed when package on the next line is selected
+selectLEco2.addAccPkg(accPkgName: AccPkgs.ALLWFLP) // removes previous AllWFL accessory when this package is added
+selectLEco2.addAccPkg(accPkgName: AccPkgs.FSFMLP)
+selectLEco2.printModColor()
 
 
 
