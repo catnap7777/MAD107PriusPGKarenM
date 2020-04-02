@@ -82,6 +82,15 @@ class Prius2020 {
         self.priusColor = color.rawValue
     }
     
+    //.. computed variable - for a 10% off sale price
+    var salePromo: Double {
+        
+        guard (priusModelDictionary[priusModel]?.price) != nil else {
+            return 0
+        }
+        return ((priusModelDictionary[priusModel]?.price ?? 0.0) - (priusModelDictionary[priusModel]?.price ?? 0.0) * 0.10) // 10% off base price
+    }
+    
     func addExtAcc(extAccName: ExtAcc) {
         //ADD ACCESSORIES ONLY IF THEY ALREADY HAVEN'T BEEN ADDED AS PART OF AN ACCESSORY PACKAGE
         switch extAccName {
@@ -230,11 +239,53 @@ class Prius2020 {
         
     }
     
+    //.. function called to see if there's a sale
+    func isThereASale() {
+        
+        var saleFlag = false
+        
+        switch priusModel {
+            case "L Eco":
+                saleFlag = false
+            case "LE":
+                saleFlag = false
+            case "XLE":
+                saleFlag = true
+            case "Limited":
+                saleFlag = false
+            case "LE AWD-e":
+                saleFlag = false
+            case "XLE AWD-e":
+                saleFlag = false
+            default:
+                saleFlag = false
+        }
+        
+        if saleFlag == false {
+            var noSalePrice = salePromo
+            print("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+            print("\t\t\t\t\t\t***** Sorry, but there is no sale right now *****")
+            print("\t\t\t\t\t\t\t\t***** Base Price = $\(String(format: "%.2f", priusModelDictionary[priusModel]?.price ?? 0.0)) *****")
+            print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+        } else {
+            let salePrice = salePromo
+            print("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+            print("\t\t\t\t***** CONGRATULATIONS!!!! THERE IS A SALE ON THIS MODEL: \(priusModel) *****")
+            print("\t\t\t\t\t\t\t***** NEW Base Price = $\(String(format: "%.2f", salePrice)) *****")
+            print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+            
+        }
+    }
+    
     func printModColor() {
         
-        print("\n\n*********************************************************************************")
-        print("**              Congratulations on your 2020 Prius purchase!                   **")
-        print("*********************************************************************************")
+        print("\n\n\n***************************************************************************************************")
+        print("***************************************************************************************************")
+        print("**                                                                                               **")
+        print("**                       Congratulations on your 2020 Prius purchase!                            **")
+        print("**                                                                                               **")
+        print("***************************************************************************************************")
+        print("***************************************************************************************************")
         print("\n\t\tYou've selected:  \n\n\t\t\t\tModel: \(priusModel)   Color: \(priusColor)")
         
         
@@ -290,34 +341,6 @@ class PriusLEco: Prius2020 {
         super.init(model: "L Eco", color: color)
     }
     
-    //.. function called to see if there's a sale
-    func isThereASale(saleFlag: Bool) {
-        
-        if saleFlag == false {
-            var noSalePrice = salePromo
-            print("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-            print("\t\t\t\t***** Sorry, but there is no sale right now *****")
-            print("\t\t\t\t\t***** Base Price = $\(String(format: "%.2f", priusModelDictionary[kamModel]?.price ?? 0.0)) *****")
-            print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-        } else {
-            let salePrice = salePromo
-            print("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-            print("\t***** CONGRATULATIONS!!!! THERE IS A SALE ON THIS MODEL: \(kamModel) *****")
-            print("\t\t\t\t***** NEW Base Price = $\(String(format: "%.2f", salePrice)) *****")
-            print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-            
-        }
-    }
-    
-    //.. computed variable - for a 10% off sale price
-    var salePromo: Double {
-        
-        guard (priusModelDictionary[kamModel]?.price) != nil else {
-            return 0
-        }
-        return ((priusModelDictionary[kamModel]?.price ?? 0.0) - (priusModelDictionary[kamModel]?.price ?? 0.0) * 0.10) // 10% off base price
-    }
-    
     override func printModColor() {
         super.printModColor()
         print("\nModel L Eco: \(priusModelDictionary[kamModel]?.desc ?? "nf")")
@@ -332,7 +355,7 @@ class PriusLEco: Prius2020 {
         
         var i = 1
         print("\nStandard Equipment:")
-        print("................................................................................")
+        print("..................................................................................................")
         for item in stdEquip {
             print("\(i). \(item)")
             i += 1
@@ -362,7 +385,7 @@ class PriusLE: Prius2020 {
                         "Up to 24.6 cu. ft. of Cargo Space"]
         var i = 1
         print("\nStandard Equipment:")
-        print("................................................................................")
+        print("..................................................................................................")
         for item in stdEquip {
             print("\(i). \(item)")
             i += 1
@@ -397,7 +420,7 @@ class PriusXLE: Prius2020 {
         
         var i = 1
         print("\nStandard Equipment:")
-        print("................................................................................")
+        print("..................................................................................................")
         for item in stdEquip {
             print("\(i). \(item)")
             i += 1
@@ -430,7 +453,7 @@ class PriusLimited: Prius2020 {
         
         var i = 1
         print("\nStandard Equipment:")
-        print("................................................................................")
+        print("..................................................................................................")
         for item in stdEquip {
             print("\(i). \(item)")
             i += 1
@@ -463,7 +486,7 @@ class PriusLEAWDe: Prius2020 {
         
         var i = 1
         print("\nStandard Equipment:")
-        print("................................................................................")
+        print("..................................................................................................")
         for item in stdEquip {
             print("\(i). \(item)")
             i += 1
@@ -496,7 +519,7 @@ class PriusXLEAWDe: Prius2020 {
         
         var i = 1
         print("\nStandard Equipment:")
-        print("................................................................................")
+        print("..................................................................................................")
         for item in stdEquip {
             print("\(i). \(item)")
             i += 1
@@ -573,7 +596,7 @@ selectLEco2.addExtAcc(extAccName: ExtAcc.PaintPF)
 selectLEco2.printModColor()
 
 //...............................................................................................
-//********  PEARL COLOR CAR
+//********  BLACK COLOR CAR
 //.. attempt to add more packages AND a sale price
 selectLEco2.priusColor = CarColor.Black.rawValue
 selectLEco2.addExtAcc(extAccName: ExtAcc.DoorEG) // already part of a package, so should NOT be printed in internal accessories section of rpt
@@ -581,8 +604,15 @@ selectLEco2.addIntAcc(intAccName: IntAcc.AllWFL) // added but then removed when 
 selectLEco2.addAccPkg(accPkgName: AccPkgs.ALLWFLP) // removes previous AllWFL accessory when this package is added
 selectLEco2.addAccPkg(accPkgName: AccPkgs.FSFMLP)
 selectLEco2.printModColor()
-selectLEco2.isThereASale(saleFlag: true)
+selectLEco2.isThereASale()
 
+//...............................................................................................
+//********  SILVER COLOR CAR
+//.. select a different model Prius to test out sale stuff
+var selectXLE = PriusXLE(model: "XLE", color: CarColor.Silver)
+selectXLE.addAccPkg(accPkgName: AccPkgs.PP3)
+selectXLE.printModColor()
+selectXLE.isThereASale()
 
 
 
