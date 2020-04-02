@@ -282,15 +282,40 @@ class Prius2020 {
 
 //.. subclass for Prius Model L Eco
 class PriusLEco: Prius2020 {
-//    var kamTest: String = "this is a test"
-    //var kamTest2: Int
+    
     var kamModel: String
     
     override init(model: String, color: CarColor) {
-        //self.kamTest2 = 0
-        //self.kamModel = model
         self.kamModel = "L Eco"
         super.init(model: "L Eco", color: color)
+    }
+    
+    //.. function called to see if there's a sale
+    func isThereASale(saleFlag: Bool) {
+        
+        if saleFlag == false {
+            var noSalePrice = salePromo
+            print("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+            print("\t\t\t\t***** Sorry, but there is no sale right now *****")
+            print("\t\t\t\t\t***** Base Price = $\(String(format: "%.2f", priusModelDictionary[kamModel]?.price ?? 0.0)) *****")
+            print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+        } else {
+            let salePrice = salePromo
+            print("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+            print("\t***** CONGRATULATIONS!!!! THERE IS A SALE ON THIS MODEL: \(kamModel) *****")
+            print("\t\t\t\t***** NEW Base Price = $\(String(format: "%.2f", salePrice)) *****")
+            print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+            
+        }
+    }
+    
+    //.. computed variable - for a 10% off sale price
+    var salePromo: Double {
+        
+        guard (priusModelDictionary[kamModel]?.price) != nil else {
+            return 0
+        }
+        return ((priusModelDictionary[kamModel]?.price ?? 0.0) - (priusModelDictionary[kamModel]?.price ?? 0.0) * 0.10) // 10% off base price
     }
     
     override func printModColor() {
@@ -318,13 +343,10 @@ class PriusLEco: Prius2020 {
 
 //.. subclass for Prius Model LE
 class PriusLE: Prius2020 {
-    //    var kamTest: String = "this is a test"
-    //var kamTest2: Int
+    
     var kamModel: String
     
     override init(model: String, color: CarColor) {
-        //self.kamTest2 = 0
-        //self.kamModel = model
         self.kamModel = "LE"
         super.init(model: "LE", color: color)
     }
@@ -351,13 +373,10 @@ class PriusLE: Prius2020 {
 
 //.. subclass for Prius Model XLE
 class PriusXLE: Prius2020 {
-    //    var kamTest: String = "this is a test"
-    //var kamTest2: Int
+    
     var kamModel: String
     
     override init(model: String, color: CarColor) {
-        //self.kamTest2 = 0
-        //self.kamModel = model
         self.kamModel = "XLE"
         super.init(model: "XLE", color: color)
     }
@@ -389,13 +408,10 @@ class PriusXLE: Prius2020 {
 
 //.. subclass for Prius Model Limited
 class PriusLimited: Prius2020 {
-    //    var kamTest: String = "this is a test"
-    //var kamTest2: Int
+    
     var kamModel: String
     
     override init(model: String, color: CarColor) {
-        //self.kamTest2 = 0
-        //self.kamModel = model
         self.kamModel = "Limited"
         super.init(model: "Limited", color: color)
     }
@@ -429,8 +445,6 @@ class PriusLEAWDe: Prius2020 {
     var kamModel: String
     
     override init(model: String, color: CarColor) {
-        //self.kamTest2 = 0
-        //self.kamModel = model
         self.kamModel = "LE AWD-e"
         super.init(model: "LE AWD-e", color: color)
     }
@@ -460,13 +474,10 @@ class PriusLEAWDe: Prius2020 {
 
 //.. subclass for Prius Model XLE AWD-e
 class PriusXLEAWDe: Prius2020 {
-    //    var kamTest: String = "this is a test"
-    //var kamTest2: Int
+    
     var kamModel: String
     
     override init(model: String, color: CarColor) {
-        //self.kamTest2 = 0
-        //self.kamModel = model
         self.kamModel = "XLE AWD-e"
         super.init(model: "XLE AWD-e", color: color)
     }
@@ -563,13 +574,14 @@ selectLEco2.printModColor()
 
 //...............................................................................................
 //********  PEARL COLOR CAR
-//.. attempt to add more packages
+//.. attempt to add more packages AND a sale price
 selectLEco2.priusColor = CarColor.Black.rawValue
 selectLEco2.addExtAcc(extAccName: ExtAcc.DoorEG) // already part of a package, so should NOT be printed in internal accessories section of rpt
 selectLEco2.addIntAcc(intAccName: IntAcc.AllWFL) // added but then removed when package on the next line is selected
 selectLEco2.addAccPkg(accPkgName: AccPkgs.ALLWFLP) // removes previous AllWFL accessory when this package is added
 selectLEco2.addAccPkg(accPkgName: AccPkgs.FSFMLP)
 selectLEco2.printModColor()
+selectLEco2.isThereASale(saleFlag: true)
 
 
 
