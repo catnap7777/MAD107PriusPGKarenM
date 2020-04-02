@@ -1,7 +1,7 @@
 import Cocoa
 
 var str = "Hello, playground"
-
+//.. Build a 2020 Prius based on information off of Toyota's website - ie. Model, Color, Internal Accesories, External Accessories, Accessory Packages
 
 var priusModelDictionary = ["L Eco": (price: 24325.00, desc: "Economy"),
                             "LE": (price: 25535.00, desc: "Luxury Edition"),
